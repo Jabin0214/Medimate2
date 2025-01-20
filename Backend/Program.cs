@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
 
 // 注册数据库上下文
 builder.Services.AddDbContext<PharmacyContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

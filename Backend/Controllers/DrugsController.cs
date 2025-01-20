@@ -47,9 +47,9 @@ namespace Drugsearch.Controllers
             }
 
             var drugs = await _context.Drugs
-                .Where(d => EF.Functions.Collate(d.Name, "NOCASE").Contains(name))
-                //忽略大小写
-                .ToListAsync();
+            .Where(d => EF.Functions.Like(EF.Functions.Collate(d.Name, "Latin1_General_CI_AS"), $"%{name}%"))
+            //忽略大小写
+            .ToListAsync();
 
             if (drugs == null || !drugs.Any())
             {
