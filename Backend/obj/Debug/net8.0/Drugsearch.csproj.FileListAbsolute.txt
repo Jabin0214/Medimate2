@@ -158,3 +158,4 @@
 /Users/jabin/RiderProjects/Drugsearch/Drugsearch/obj/Debug/net8.0/Drugsearch.pdb
 /Users/jabin/RiderProjects/Drugsearch/Drugsearch/obj/Debug/net8.0/Drugsearch.genruntimeconfig.cache
 /Users/jabin/RiderProjects/Drugsearch/Drugsearch/obj/Debug/net8.0/ref/Drugsearch.dll
+/Users/jabin/RiderProjects/Drugsearch/Drugsearch/obj/Debug/net8.0/Drugsearch.sourcelink.json
