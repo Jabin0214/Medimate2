@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ddAFAkVGdnHEQxvX1wXKmPWmj35ZC6wwyuU+74vasYeargcw9Ppxs/Js6zCarKy21cZX/s143oZ5fcvFMPjFQA==",
+  "dgSpecHash": "JyekMsCGMZYXmgbj3Go13uBGFvDLumg6/t1vh988R/7iwyQzHYL5xmbGfSrIq3Osq6L7Uzbjfubba+wlt2l50A==",
   "success": true,
-  "projectFilePath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Drugsearch.csproj",
+  "projectFilePath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/Drugsearch.csproj",
   "expectedPackageFiles": [
     "/Users/jabin/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/jabin/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/8.0.0/microsoft.aspnetcore.diagnostics.entityframeworkcore.8.0.0.nupkg.sha512",

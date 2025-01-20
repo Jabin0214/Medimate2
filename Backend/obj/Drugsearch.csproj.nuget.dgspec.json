@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Drugsearch.csproj": {}
+    "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/Drugsearch.csproj": {}
   },
   "projects": {
-    "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Drugsearch.csproj": {
+    "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/Drugsearch.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Drugsearch.csproj",
+        "projectUniqueName": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/Drugsearch.csproj",
         "projectName": "Drugsearch",
-        "projectPath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Drugsearch.csproj",
+        "projectPath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/Drugsearch.csproj",
         "packagesPath": "/Users/jabin/.nuget/packages/",
-        "outputPath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/obj/",
+        "outputPath": "/Users/jabin/RiderProjects/Drugsearch/Drugsearch/Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jabin/.nuget/NuGet/NuGet.Config"
