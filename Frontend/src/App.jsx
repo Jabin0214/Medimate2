@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      <form onSubmit={handleFormSubmit} className="mb-4">
+      <form onSubmit={handleFormSubmit} className="mb-4 mt-10">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -38,7 +38,7 @@ const App = () => {
             value={searchTerm}
             onChange={handleSearchChange}
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos..."
+            placeholder="Search Products..."
             required
           />
           <button
@@ -52,10 +52,34 @@ const App = () => {
       {error && <p className="text-red-500">{error}</p>}
       <ul>
         {results.map((result) => (
-          <li key={result.id}>
-            <h2>{result.name}</h2>
-            <p>Price: ${result.price}</p>
-            <p>Description: {result.description}</p>
+          <li key={result.id} className="mb-6 border p-4 rounded-lg shadow-md">
+            <h2 className="text-lg font-bold mb-2">{result.name}</h2>
+            {result.images && (
+              <img
+                src={result.images}
+                alt={result.name}
+                className="mb-4 max-w-full rounded-lg"
+              />
+            )}
+            <p>
+              <strong>Price:</strong> ${result.price}
+            </p>
+            <p>
+              <strong>Description:</strong> {result.description}
+            </p>
+            <p>
+              <strong>Warnings:</strong> {result.warnings}
+            </p>
+            <p>
+              <strong>Common Use:</strong>{" "}
+              {result.commonUse === "nan" ? "N/A" : result.commonUse}
+            </p>
+            <p>
+              <strong>Ingredients:</strong> {result.ingredients}
+            </p>
+            <p>
+              <strong>Directions:</strong> {result.directions}
+            </p>
           </li>
         ))}
       </ul>
