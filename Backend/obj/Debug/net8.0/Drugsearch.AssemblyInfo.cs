@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Drugsearch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee1de93988f180b578d9eb724d4e54ce0e7b846d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f21791dbafbe3ca664be648cb177ccae56a6444e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Drugsearch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Drugsearch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
