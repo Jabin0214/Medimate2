@@ -1,0 +1,86 @@
+# -------------------------
+# Node.js / React 项目部分
+# -------------------------
+
+# 忽略依赖文件夹
+node_modules/
+
+# 构建输出
+build/
+dist/
+
+# 临时文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 编辑器或操作系统生成的临时文件
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# -------------------------
+# ASP.NET Core 项目部分
+# -------------------------
+
+# 忽略编译输出
+bin/
+obj/
+
+# 用户相关文件
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# NuGet 包
+*.nupkg
+project.lock.json
+*.nuget.props
+*.nuget.targets
+packages/
+
+# 发布输出
+wwwroot/
+
+# 临时文件
+*.log
+*.tmp
+*.bak
+*.swp
+
+# 编辑器或操作系统生成的临时文件
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# -------------------------
+# 全局规则
+# -------------------------
+
+# 忽略 macOS 或 Windows 生成的系统文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# 忽略日志文件
+*.log
+
+# 忽略压缩文件和二进制文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.dll
+*.exe
