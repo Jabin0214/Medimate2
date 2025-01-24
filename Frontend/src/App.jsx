@@ -1,88 +1,28 @@
-import React, { useState } from "react";
-import { search } from "../../Frontend/api/apiClient"; // 确保路径正确
+import React from "react";
+import { Link } from "react-router-dom";
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState(null);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value); // 更新搜索框的值
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault(); // 阻止表单默认提交行为
-    try {
-      const data = await search(searchTerm); // 调用 API 请求
-      setResults(data); // 将返回的数据存入状态
-      setError(null); // 清除可能的错误
-    } catch (err) {
-      setError("An error occurred while fetching data.");
-      console.error(err);
-    }
-  };
+  const cards = [
+    { id: 1, title: "MediSearch", description: "Search for medications", link: "/search" },
+    { id: 2, title: "MediLogin", description: "Login to your account", link: "/login" },
+    { id: 3, title: "MediChat", description: "Chat with experts", link: "/chat" },
+  ];
 
   return (
-    <div className="max-w-md mx-auto">
-      <form onSubmit={handleFormSubmit} className="mb-4 mt-10">
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
-        <div className="relative">
-          <input
-            type="search"
-            id="default-search"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Products..."
-            required
-          />
-          <button
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      <h1 className="text-2xl font-bold mb-6 text-gray-800">Medimate Web</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-4xl">
+        {cards.map((card) => (
+          <Link
+            key={card.id}
+            to={card.link}
+            className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow"
           >
-            Search
-          </button>
-        </div>
-      </form>
-      {error && <p className="text-red-500">{error}</p>}
-      <ul>
-        {results.map((result) => (
-          <li key={result.id} className="mb-6 border p-4 rounded-lg shadow-md">
-            <h2 className="text-lg font-bold mb-2">{result.name}</h2>
-            {result.images && (
-              <img
-                src={result.images}
-                alt={result.name}
-                className="mb-4 max-w-full rounded-lg"
-              />
-            )}
-            <p>
-              <strong>Price:</strong> ${result.price}
-            </p>
-            <p>
-              <strong>Description:</strong> {result.description}
-            </p>
-            <p>
-              <strong>Warnings:</strong> {result.warnings}
-            </p>
-            <p>
-              <strong>Common Use:</strong>{" "}
-              {result.commonUse === "nan" ? "N/A" : result.commonUse}
-            </p>
-            <p>
-              <strong>Ingredients:</strong> {result.ingredients}
-            </p>
-            <p>
-              <strong>Directions:</strong> {result.directions}
-            </p>
-          </li>
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">{card.title}</h2>
+            <p className="text-gray-600">{card.description}</p>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
