@@ -10,18 +10,20 @@ using Drugsearch.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 让后端监听 `http://0.0.0.0:5000`
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
 // 配置 CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173") // 允许的前端地址
-              .AllowAnyHeader() // 允许任何请求头
-              .AllowAnyMethod() // 允许任何请求方法
-              .AllowCredentials(); // 如果需要 Cookie 或认证
+        policy.WithOrigins("http://localhost:5173", "http://backend:5000") // 允许 Docker 内部通信
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
-
 // 注册数据库上下文
 builder.Services.AddDbContext<PharmacyContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -73,11 +75,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+// 其他服务配置（不变）
+
 var app = builder.Build();
 
 // 使用 CORS
 app.UseCors("AllowFrontend");
 
+// 启用 Swagger（仅在开发环境）
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -89,4 +94,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.Run();
+
+// 🚀 显式监听 `0.0.0.0:5000`
+app.Run("http://0.0.0.0:5000");

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { search } from "/../Frontend/api/apiClient.js";
+import { search } from "../api/apiClient";
+import axiosInstance from "../api/axiosInstance";
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,7 +8,11 @@ const SearchPage = () => {
   const [error, setError] = useState(null);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+      event.preventDefault();
+    setResults([]);
+    axiosInstance.get('/Drugs/search?name=swiss')
+      .then(response => console.log("API Response:", response.data))
+      .catch(error => console.error("API Error:", error));
     try {
       const data = await search(searchTerm);
       setResults(data);

@@ -1,25 +1,31 @@
-# 使用 Node.js 镜像来构建 React 前端
-FROM node:21 AS build
-
-# 设置工作目录
+# 1. 使用 Node.js 构建前端
+FROM node:23 AS build
 WORKDIR /app
 
-# 拷贝 package.json 和 package-lock.json 并安装依赖
+# 2. 复制 package.json 并安装依赖
 COPY package*.json ./
 RUN npm install
 
-# 拷贝所有前端代码并构建
+# 3. 复制前端代码
 COPY . .
+
+# 复制 .env 文件到 Docker
+COPY .env .env
+
+# 4. 构建前端
 RUN npm run build
 
-# 使用 Nginx 部署前端代码
+# 5. 使用 Nginx 作为 Web 服务器
 FROM nginx:alpine
 
-# 拷贝构建的代码到 Nginx 的默认静态文件目录
-COPY --from=build /app/build /usr/share/nginx/html
+# 6. 确保 `dist/` 目录被正确复制
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 
-# 暴露 Nginx 的默认端口
+# 7. 复制 Nginx 配置（可选）
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# 8. 公开端口
 EXPOSE 80
 
-# 启动 Nginx
+# 9. 启动 Nginx
 CMD ["nginx", "-g", "daemon off;"]

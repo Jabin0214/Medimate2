@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstance';
+import axiosInstance from "./axiosInstance";
 import endpoints from './endpoints';
 
 export const search = async (query) => {
