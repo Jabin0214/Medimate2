@@ -11,14 +11,14 @@ using Drugsearch.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // 让后端监听 `http://0.0.0.0:5000`
-builder.WebHost.UseUrls("http://0.0.0.0:5000");
+builder.WebHost.UseUrls("http://0.0.0.0:5001");
 
 // 配置 CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://backend:5000") // 允许 Docker 内部通信
+        policy.WithOrigins("http://localhost:5001", "http://backend:5000", "http://localhost:3000") // 允许 Docker 内部通信
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -96,4 +96,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 // 🚀 显式监听 `0.0.0.0:5000`
-app.Run("http://0.0.0.0:5000");
+app.Run("http://0.0.0.0:5001");

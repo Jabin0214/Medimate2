@@ -10,9 +10,6 @@ const SearchPage = () => {
   const handleFormSubmit = async (event) => {
       event.preventDefault();
     setResults([]);
-    axiosInstance.get('/Drugs/search?name=swiss')
-      .then(response => console.log("API Response:", response.data))
-      .catch(error => console.error("API Error:", error));
     try {
       const data = await search(searchTerm);
       setResults(data);
